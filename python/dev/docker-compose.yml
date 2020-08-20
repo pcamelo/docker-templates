@@ -1,0 +1,9 @@
+version: '3'
+services:
+  project-name:
+    build: project-name
+    ports:
+      - "80:80"
+    volumes:
+      - ../src:/opt/project-name
+    env_file: env
