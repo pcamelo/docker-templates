@@ -9,7 +9,7 @@ LABEL maintainer="example@example.com"
 CMD ["/sbin/my_init"]
 
 # Container config
-ENV PROJECT_NAME=example
+ENV PROJECT_NAME=project-name
 ENV PYTHON_MAJOR_VERSION=3
 ENV PYTHON_MINOR_VERSION=7
 ENV DEPENDENCIES="git libxml2-dev libxslt1-dev"
@@ -35,10 +35,9 @@ RUN echo "******** Adding deadsnakes PPA ********" && \
     mkdir /etc/service/${PROJECT_NAME}
 
 COPY ./src /opt/${PROJECT_NAME}
-WORKDIR /opt/${PROJECT_NAME}
 RUN echo "******** Install python dependencies  ********" && \
     pip3 install --upgrade pip setuptools wheel && \
-    pip3 install -r requirements.txt
+    pip3 install -r /opt/${PROJECT_NAME}/requirements.txt
 
 COPY entrypoint.sh /etc/service/${PROJECT_NAME}/run
 
