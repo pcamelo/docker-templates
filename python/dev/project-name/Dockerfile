@@ -14,6 +14,10 @@ ENV PYTHON_MAJOR_VERSION=3
 ENV PYTHON_MINOR_VERSION=7
 ENV DEPENDENCIES="git libxml2-dev libxslt1-dev"
 
+# Make sure python won't buffer stdout
+# https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUNBUFFERED
+ENV PYTHONUNBUFFERED=1
+
 # Container build
 ENV PYTHON_VERSION=${PYTHON_MAJOR_VERSION}.${PYTHON_MINOR_VERSION}
 
